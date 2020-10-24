@@ -4,7 +4,6 @@ import re
 import time
 import csv
 import html5lib
-import requests
 summaryData = []
 links = []
 # csv with all the data
