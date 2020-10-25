@@ -6,6 +6,12 @@ To activate the virtual enviroment:
 $ source env/bin/activate
 ```
 
+To update the requirements:
+
+```
+$ pip freeze > requirements.txt
+```
+
 To install the dependencies
 
 ```bash
