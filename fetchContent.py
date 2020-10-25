@@ -5,39 +5,37 @@ import time
 import csv
 import html5lib
 import pandas as pd
+import os
 
 storyText = []
 chapters = []
 # name the file with the ID
 # dump the text in a text file
-
+# https://www.fanfiction.net/s/13672523/1/The-Slytherin-Prince
 def getFanFic():
-    df = pd.read_csv('HPSummaryTrim.csv')
-    links = df["link"]
-    for oglink in links:
-        req = requests.get(oglink)
-        bsObj = BeautifulSoup(req.content, 'html.parser')
-        chapters = bsObj.find("select", {"name":"chapter"})
-        options = chapters.findAll("option")
-        for option in options:
-            option = option.attrs['value']
-            chapters.append(option)
-        for chapter in chapters:
-            partial = ("/%s/") % (chapter)
-            link = oglink.replace("/1/", partial)
-            req = requests.get(link)
-            content = bsObj.find("div", {"class":"storytext xcontrast_txt nocopy"}).get_text()
-            storyText.append(content)
-        storyID = oglink.replace("https://www.fanfiction.net/s/", "")
+    df = pd.read_csv('HPSummary.csv')
+    for row, data in df.iterrows():
+        link = data["link"]
+        link = link.split("/1/")
+        firstLink = link[0] + "/"
+        lastLink = "/" + link[1]
+        chapterTotal = int(data["chapters"]) + 1
+        print(chapterTotal)
+        startChapter = 1
+        storyID = data["link"].replace("https://www.fanfiction.net/s/", "")
         storyID = storyID.split("/")
         storyID = str(storyID[0])
-        with open('%s.txt' % storyID, 'w') as outfile:
+        for i in range(startChapter, chapterTotal):
+            link =  firstLink + str(i) + lastLink
+            print(link)
+            req = requests.get(link)
+            bsObj = BeautifulSoup(req.content, 'html.parser')
+            content = bsObj.find("div", {"class":"storytext xcontrast_txt nocopy"}).get_text()
+            storyText.append(content)
+        rating = data["rating"]
+        dirName = rating
+        if not os.path.exists(dirName):
+            os.mkdir(dirName)
+        with open('dirName/%s.txt' % storyID, 'w') as outfile:
             outfile.write("\n".join(storyText))
-
-
-
-        # https://www.fanfiction.net/s/12611836/1/What-Nobody-Says
-        # self.location='/s/12611836/3/What-Nobody-Says'
-        # self.location='/s/12611836/4/What-Nobody-Says'
-
 getFanFic()

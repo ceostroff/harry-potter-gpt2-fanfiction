@@ -8,7 +8,7 @@ summaryData = []
 links = []
 # csv with all the data
 def getLinks():
-    for i in range(1, 19785):
+    for i in range(1, 1001):
         print(i)
         time.sleep(1)
         url = "https://www.fanfiction.net/book/Harry-Potter/?&srt=1&lan=1&r=103&p=" + str(i)
@@ -18,7 +18,7 @@ def getLinks():
         for post in posts:
             title = post.find("a", {"class":"stitle"})
             partLink = title.get('href')
-            link = "https://www.fanfiction.net/book/Harry-Potter" + partLink
+            link = "https://www.fanfiction.net" + partLink
             links.append(link)
             # print(link)
             summary = post.find("div", {"class":"z-indent z-padtop"}).get_text()
@@ -36,38 +36,45 @@ def getLinks():
                 genre = info[2]
             except:
                 genre = ""
-            try:
-                chapters = info[3]
-            except:
-                chapters = ""
-            try:
-                words = info[4]
-            except:
-                words = ""
-            try:
-                reviews = info[5]
-            except:
-                reviews = ""
-            try:
-                favs = info[6]
-            except:
-                favs = ""
-            try:
-                follows = info[7]
-            except:
-                follows = ""
+            for bit in info:
+                if "Chapters" in bit:
+                    chapters = bit.split(": ")
+                    chapters = chapters[1]
+                else:
+                    print("N/A")
+                if "Words" in bit:
+                    words = bit.split(": ")
+                    words = words[1]
+                else:
+                    print("N/A")
+                if "Reviews" in bit:
+                    reviews = bit.split(": ")
+                    reviews = reviews[1]
+                else:
+                    print("N/A")
+                if "Favs" in bit:
+                    favs = bit.split(": ")
+                    favs = favs[1]
+                else:
+                    print("N/A")
+                if "Follows" in bit:
+                    follows = bit.split(": ")
+                    follows = follows[1]
+                else:
+                    print("N/A")
             dates = post.find("div", {"class":"z-padtop2 xgray"}).findAll("span")
-            updated = dates[0].attrs['data-xutime']
-            try:
+            length = len(dates)
+            if length == 2:
+                updated = dates[0].attrs['data-xutime']
                 published = dates[1].attrs['data-xutime']
-            except:
-                published = ""
+            elif length == 1:
+                updated = ''
+                published = dates[0].attrs['data-xutime']
             data = {
                 'title': title.get_text().strip(),
                 'link': link.strip(),
                 'summary': summary.strip(),
                 'rating': rating.strip(),
-                'language': language.strip(),
                 'genre': genre.strip(),
                 'chapters': chapters.strip(),
                 'words': words.strip(),
@@ -77,9 +84,7 @@ def getLinks():
                 'updated': updated.strip(),
                 'published': published.strip()
             }
-            # print(data)
             summaryData.append(data)
-
 
 def saveData(summaryData):
     filename = 'HPSummary.csv'
