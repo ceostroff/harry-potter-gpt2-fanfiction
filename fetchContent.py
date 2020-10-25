@@ -20,14 +20,12 @@ def getFanFic():
         firstLink = link[0] + "/"
         lastLink = "/" + link[1]
         chapterTotal = int(data["chapters"]) + 1
-        print(chapterTotal)
         startChapter = 1
         storyID = data["link"].replace("https://www.fanfiction.net/s/", "")
         storyID = storyID.split("/")
         storyID = str(storyID[0])
         for i in range(startChapter, chapterTotal):
             link =  firstLink + str(i) + lastLink
-            print(link)
             req = requests.get(link)
             bsObj = BeautifulSoup(req.content, 'html.parser')
             content = bsObj.find("div", {"class":"storytext xcontrast_txt nocopy"}).get_text()
@@ -36,6 +34,6 @@ def getFanFic():
         dirName = rating
         if not os.path.exists(dirName):
             os.mkdir(dirName)
-        with open('dirName/%s.txt' % storyID, 'w') as outfile:
+        with open('%s/%s.txt' % (dirName, storyID), 'w') as outfile:
             outfile.write("\n".join(storyText))
 getFanFic()
