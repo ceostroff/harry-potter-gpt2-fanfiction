@@ -10,4 +10,5 @@ python run_language_modeling.py \
     --do_eval \
     --per_device_train_batch_size=1 \
     --per_device_eval_batch_size=1 \
-    --eval_data_file=$TEST_FILE
+    --eval_data_file=$TEST_FILE \
+    --save_total_limit=5
