@@ -8,6 +8,6 @@ python run_language_modeling.py \
     --do_train \
     --train_data_file=$TRAIN_FILE \
     --do_eval \
-    --per_device_train_batch_size=4 \
-    --per_device_eval_batch_size=4 \
+    --per_device_train_batch_size=1 \
+    --per_device_eval_batch_size=1 \
     --eval_data_file=$TEST_FILE
