@@ -1,5 +1,13 @@
 # Hufflepuff4Life
 
+## Getting started
+
+Run `./train_model.sh` to train the model.
+
+Run and tweak `./text_generation.sh` to get generated text!
+
+## Python setup
+
 To activate the virtual enviroment:
 
 ```bash
