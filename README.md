@@ -1,4 +1,4 @@
-# Hufflepuff4Life
+# Harry Potter GPT-2 fanfiction generator
 
 ```
 ,-_/,.                   .-,--.     .  .
@@ -20,14 +20,48 @@
  ,|
  `'
 ```
-                                                                                                  
+
+Generate your own Harry Potter fanfiction with a pre-trained GPT-2 generative text model using huggingface's [transformers](https://github.com/huggingface/transformers).
+
+This project has two parts: a scraper and a text generation model. The scraper fetches stories from https://www.fanfiction.net/ and creates text files ready for training.
+
+The text generation bit lets you generate new fanfiction. We have pre-trained a model using the ~100 most popular HP fanfiction, but you can scrape a different set of stories and train your own model.
+
+## Requirements
+
+A computer with `git`, `python3` and `pip` installed.
+
 ## Getting started
 
-Run `./train_model.sh` to train the model.
+Clone the repo and install the dependencies (we recommend setting up a `virtualenv`):
 
-Run and tweak `./text_generation.sh` to get generated text!
+```bash
+$ pip3 install -r requirements.txt
+```
 
-## AWS quick start
+On another folder, clone [transformers](https://github.com/huggingface/transformers) and install it too
+
+```bash
+$ git clone git@github.com:huggingface/transformers.git && pip3 install .
+```
+
+Now you should have everything you need to run the scraper and the model.
+
+To run the text generation script first give it permission to run:
+
+```bash
+$ chmod +x text_generation.sh
+```
+
+Now you can generate text with default settings and the pre-trained model:
+
+```bash
+$ ./text_generation.sh
+```
+
+The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 20 blobs of 100 characters each).
+
+## Training a model with AWS
 
 You can train the model in your own computer but if you don't own a desktop with a dedicated graphics card and loads of memory it will take a long time. That's why we opted to train the model using a AWS instance with special machine-learning hardware.
 
