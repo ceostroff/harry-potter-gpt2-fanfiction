@@ -8,7 +8,7 @@ Run and tweak `./text_generation.sh` to get generated text!
 
 ## AWS quick start
 
-You can train the model in your own computer but if you don't own a desktop with a dedicated graphics card and loads of memory it will take a long time. That's why we opted to train the model using a AWS's instance with special machine-learning hardware.
+You can train the model in your own computer but if you don't own a desktop with a dedicated graphics card and loads of memory it will take a long time. That's why we opted to train the model using a AWS instance with special machine-learning hardware.
 
 Choose an instance type like `g4dn.4xlarge` (priced at ~$1 per hour). With those specs you can expect training a model with ~100mb of data in about 7 hours. Disk size can fill up quickly, so choose at least 64gb. When the instance is running, `ssh` inside and run the following commands to train the model:
 
