@@ -39,7 +39,7 @@ First, clone the repo:
 $ git clone git@github.com:ceostroff/Hufflepuff4Life.git
 ```
 
-Now, install the dependencies (we recommend setting up a `virtualenv`):
+Now, navigate to the folder and install the dependencies (we recommend setting up a `virtualenv`):
 
 ```bash
 $ pip3 install -r requirements.txt
