@@ -25,15 +25,21 @@ Generate your own Harry Potter fanfiction with a pre-trained GPT-2 generative te
 
 This project has two parts: a scraper and a text generation model. The scraper fetches stories from [fanfiction.net](https://www.fanfiction.net/) and creates text files ready for training.
 
-The text generation bit lets you generate new fanfiction. We have pre-trained a model using the ~100 most popular HP fanfiction, but you can scrape a different set of stories and train your own model.
+The text generation bit lets you generate new fanfiction. We have pre-trained a model using the ~100 most popular HP fanfiction stories, but you can scrape a different set of stories and train your own model.
 
 ## Requirements
 
-A computer with `git`, `python3` and `pip` installed.
+A computer with `Git`, [`Git LFS`](https://git-lfs.github.com/), `Python 3` and `pip` installed.
 
 ## Getting started
 
-Clone the repo and install the dependencies (we recommend setting up a `virtualenv`):
+First, clone the repo:
+
+```
+$ git clone git@github.com:ceostroff/Hufflepuff4Life.git
+```
+
+Now, install the dependencies (we recommend setting up a `virtualenv`):
 
 ```bash
 $ pip3 install -r requirements.txt
@@ -45,7 +51,9 @@ On another folder, clone [transformers](https://github.com/huggingface/transform
 $ git clone git@github.com:huggingface/transformers.git && pip3 install .
 ```
 
-Now you should have everything you need to run the scraper and the model.
+You should have everything you need to run the scraper and the model.
+
+## Generating fanfiction
 
 To run the text generation script first give it permission to run:
 
@@ -53,7 +61,7 @@ To run the text generation script first give it permission to run:
 $ chmod +x text_generation.sh
 ```
 
-Now you can generate text with default settings and the pre-trained model:
+Now you can generate text using the default settings and the pre-trained model:
 
 ```bash
 $ ./text_generation.sh
@@ -61,7 +69,7 @@ $ ./text_generation.sh
 
 The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 20 blobs of 100 characters each). See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
 
-## Training your own model with AWS
+## Train your own model with AWS
 
 You can train the model in your own computer but if you don't own a desktop with a dedicated graphics card and loads of memory it will take a long time. That's why we opted to train the model using a AWS instance with special machine-learning hardware.
 
@@ -115,7 +123,7 @@ It is important to set `--per_device_train_batch_size=1` and same per `--per_dev
 
 If you don't have the right permissions remember to make the script executable with `chmod +x train_model.sh`.
 
-7. Now, open a terminal in your own computer and copy the files from the server like this (remove your local files first):
+7. Now, open a terminal in your own computer and copy the files from the server like this (remove the pre-trained model first):
 
 ```bash
 rsync ubuntu@YOUR_AWS_IP:~/Hufflepuff4Life/model/* .`
