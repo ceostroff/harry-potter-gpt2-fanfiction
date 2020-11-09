@@ -29,7 +29,7 @@ The text generation bit lets you generate new fanfiction. We have pre-trained a 
 
 ## Requirements
 
-A computer with `Git`, [`Git LFS`](https://git-lfs.github.com/), `Python 3` and `pip` installed.
+A computer with Git, [Git LFS](https://git-lfs.github.com/), Python 3 and pip installed.
 
 ## Getting started
 
