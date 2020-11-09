@@ -59,9 +59,9 @@ Now you can generate text with default settings and the pre-trained model:
 $ ./text_generation.sh
 ```
 
-The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 20 blobs of 100 characters each).
+The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 20 blobs of 100 characters each). See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
 
-## Training a model with AWS
+## Training your own model with AWS
 
 You can train the model in your own computer but if you don't own a desktop with a dedicated graphics card and loads of memory it will take a long time. That's why we opted to train the model using a AWS instance with special machine-learning hardware.
 
@@ -113,7 +113,7 @@ pip3 install .
 
 It is important to set `--per_device_train_batch_size=1` and same per `--per_device_eval_batch_size=1`. If you increase the value there's a very high chance that the training will run out of memory.
 
-If you don't have the right permissions you can try make the script executable with `chmod +x train_model.sh`.
+If you don't have the right permissions remember to make the script executable with `chmod +x train_model.sh`.
 
 7. Now, open a terminal in your own computer and copy the files from the server like this (remove your local files first):
 
@@ -126,8 +126,6 @@ rsync ubuntu@YOUR_AWS_IP:~/Hufflepuff4Life/model/* .`
 ```bash
 $ ./text_generation.sh
 ```
-
-You can ammend various parameters, like text length, temperature and a repetition penalty. See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
 
 ## Python cheatsheet
 
