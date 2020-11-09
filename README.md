@@ -23,11 +23,11 @@
 
 Generate your own Harry Potter fanfiction with a pre-trained GPT-2 generative text model using huggingface's [transformers](https://github.com/huggingface/transformers).
 
-This project has two parts: a scraper and a text generation model. The scraper fetches stories from https://www.fanfiction.net/ and creates text files ready for training.
+This project has two parts: a scraper and a text generation model. The scraper fetches stories from [fanfiction.net](https://www.fanfiction.net/) and creates text files ready for training.
 
 The text generation bit lets you generate new fanfiction. We have pre-trained a model using the ~100 most popular HP fanfiction, but you can scrape a different set of stories and train your own model.
 
-## Requirements
+## Requirements
 
 A computer with `git`, `python3` and `pip` installed.
 
@@ -39,7 +39,7 @@ Clone the repo and install the dependencies (we recommend setting up a `virtuale
 $ pip3 install -r requirements.txt
 ```
 
-On another folder, clone [transformers](https://github.com/huggingface/transformers) and install it too
+On another folder, clone [transformers](https://github.com/huggingface/transformers) and install it:
 
 ```bash
 $ git clone git@github.com:huggingface/transformers.git && pip3 install .
