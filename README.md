@@ -61,7 +61,7 @@ Now you can generate text using the default settings and the pre-trained model:
 $ ./text_generation.sh
 ```
 
-The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 20 blobs of 100 characters each). See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
+The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 10 blobs of 60 words each). See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
 
 ## Train your own model with AWS
 
@@ -69,7 +69,7 @@ You can train the model in your own computer but if you don't own a desktop with
 
 Choose an instance type like `g4dn.4xlarge` (priced at ~$1 per hour). With those specs you can expect training a model with ~100mb of data in about 7 hours. Disk size can fill up quickly, so choose at least 64gb. When the instance is running, `ssh` inside and run the following commands to train the model:
 
-1. Clone this repo and navigate to the folder:
+1. Open the terminal, clone this repo and navigate to the folder:
 
 ```bash
 $ git clone git@github.com:ceostroff/harry-potter-gpt2-fanfiction.git
@@ -103,15 +103,21 @@ $ pip3 install -r requirements.txt
 
 It is important to set `--per_device_train_batch_size=1` and same per `--per_device_eval_batch_size=1`. If you increase the value there's a very high chance that the training will run out of memory.
 
-If you don't have the right permissions remember to make the script executable with `chmod +x train_model.sh`.
+6. If the training crashes or runs out of memory you can resume the training from the last checkpoint. To do that edit `train_model.sh` and change `--output_dir` to the path of the last model checkpoint. After that, run `train_model.sh` again.
 
-6. Now, open a terminal in your own computer and copy the files from the server like this (remove the pre-trained model first):
+```bash
+python run_clm.py \
+    --output_dir model/checkpoint-1000 \
+    ...
+```
+
+7. After the training is finished open a terminal in your own computer and copy the files from the server like this:
 
 ```bash
 rsync ubuntu@YOUR_AWS_IP:~/harry-potter-gpt2-fanfiction/model/* .`
 ```
 
-7. Voilà! Now you can turn off the AWS instance and run the text generation step from your own computer with:
+8. Voilà! Now you can turn off the AWS instance and run the text generation step from your own computer with:
 
 ```bash
 $ ./text_generation.sh
