@@ -36,19 +36,13 @@ A computer with Git, Python 3 and pip installed.
 First, clone the repo:
 
 ```
-$ git clone git@github.com:ceostroff/Hufflepuff4Life.git
+$ git clone git@github.com:ceostroff/harry-potter-gpt2-fanfiction.git
 ```
 
 Now, navigate to the folder and install the dependencies (we recommend setting up a `virtualenv`):
 
 ```bash
 $ pip3 install -r requirements.txt
-```
-
-On another folder, clone [transformers](https://github.com/huggingface/transformers) and install it:
-
-```bash
-$ git clone git@github.com:huggingface/transformers.git && pip3 install .
 ```
 
 You should have everything you need to run the scraper and the model.
@@ -78,7 +72,7 @@ Choose an instance type like `g4dn.4xlarge` (priced at ~$1 per hour). With those
 1. Clone this repo and navigate to the folder:
 
 ```bash
-$ git clone git@github.com:ceostroff/Hufflepuff4Life.git
+$ git clone git@github.com:ceostroff/harry-potter-gpt2-fanfiction.git
 ```
 
 2. Enter into the virtualenv:
@@ -101,19 +95,7 @@ $ pip3 install -r requirements.txt
 
 4. Install [CUDA](https://docs.nvidia.com/cuda/cuda-quick-start-guide/index.html#ubuntu-x86_64). Follow the instructions, and make sure to add CUDA to the PATH. Reboot the instance.
 
-5. Navigate to your home folder and clone https://github.com/huggingface/transformers:
-
-```bash
-$ git clone git@github.com:huggingface/transformers.git
-```
-
-And install it:
-
-```bash
-pip3 install .
-```
-
-6. Now you can train the model. Navigate to this folder again and run `train_model.sh` with:
+5. Now you can train the model. Navigate to this folder again and run `train_model.sh` with:
 
 ```bash
 ./train_model.sh
@@ -123,13 +105,13 @@ It is important to set `--per_device_train_batch_size=1` and same per `--per_dev
 
 If you don't have the right permissions remember to make the script executable with `chmod +x train_model.sh`.
 
-7. Now, open a terminal in your own computer and copy the files from the server like this (remove the pre-trained model first):
+6. Now, open a terminal in your own computer and copy the files from the server like this (remove the pre-trained model first):
 
 ```bash
-rsync ubuntu@YOUR_AWS_IP:~/Hufflepuff4Life/model/* .`
+rsync ubuntu@YOUR_AWS_IP:~/harry-potter-gpt2-fanfiction/model/* .`
 ```
 
-8. Voilà! Now you can turn off the AWS instance and run the text generation step from your own computer with:
+7. Voilà! Now you can turn off the AWS instance and run the text generation step from your own computer with:
 
 ```bash
 $ ./text_generation.sh
