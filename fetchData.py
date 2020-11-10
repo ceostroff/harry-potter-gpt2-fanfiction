@@ -1,13 +1,17 @@
+# import python libraries
 import requests
 from bs4 import BeautifulSoup
 import re
 import time
 import csv
 import html5lib
+# create lists to store data
 summaryData = []
 links = []
 # csv with all the data
+# function to get the links of the fanfiction posts
 def getLinks():
+    # get the first 1000 links
     for i in range(1, 1001):
         print(i)
         time.sleep(1)
@@ -19,10 +23,12 @@ def getLinks():
             title = post.find("a", {"class":"stitle"})
             partLink = title.get('href')
             link = "https://www.fanfiction.net" + partLink
+            # add the link to the list of links
             links.append(link)
             # print(link)
             summary = post.find("div", {"class":"z-indent z-padtop"}).get_text()
             infobulk = post.find("div", {"class":"z-padtop2 xgray"}).get_text()
+            # try to see if data describing each post is present, including rating, language, genre
             info = infobulk.split(" - ")
             try:
                 rating = info[0]
@@ -62,6 +68,7 @@ def getLinks():
                     follows = follows[1]
                 else:
                     print("N/A")
+            # get the date the post was created and updated where applicable
             dates = post.find("div", {"class":"z-padtop2 xgray"}).findAll("span")
             length = len(dates)
             if length == 2:
@@ -70,6 +77,7 @@ def getLinks():
             elif length == 1:
                 updated = ''
                 published = dates[0].attrs['data-xutime']
+            # write the existing data to a dictionary and append that to a list
             data = {
                 'title': title.get_text().strip(),
                 'link': link.strip(),
@@ -86,6 +94,7 @@ def getLinks():
             }
             summaryData.append(data)
 
+# function to write and save the summary data to a csv
 def saveData(summaryData):
     filename = 'HPSummary.csv'
     #open your new csv file with a 'w' so you can write to it
@@ -109,5 +118,6 @@ def saveData(summaryData):
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(summaryData)
+# run the two above functions
 getLinks()
 saveData(summaryData)
