@@ -3,7 +3,7 @@ export TEST_FILE=data/test.txt
 
 python run_clm.py \
     --output_dir model/ \
-    --model_name_or_path model/checkpoint-58000 \
+    --model_name_or_path gpt2 \
     --do_train \
     --train_file $TRAIN_FILE \
     --do_eval \
