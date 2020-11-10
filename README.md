@@ -114,7 +114,7 @@ python run_clm.py \
 7. After the training is finished open a terminal in your own computer and copy the files from the server like this:
 
 ```bash
-rsync ubuntu@YOUR_AWS_IP:~/harry-potter-gpt2-fanfiction/model/* .`
+rsync ubuntu@YOUR_AWS_IP:~/harry-potter-gpt2-fanfiction/model/* .
 ```
 
 8. Voilà! Now you can turn off the AWS instance and run the text generation step from your own computer with:
