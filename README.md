@@ -25,11 +25,11 @@ Generate your own Harry Potter fanfiction with a pre-trained GPT-2 generative te
 
 This project has two parts: a scraper and a text generation model. The scraper fetches stories from [fanfiction.net](https://www.fanfiction.net/) and creates text files ready for training.
 
-The text generation bit lets you generate new fanfiction. We have pre-trained a model using the ~100 most popular HP fanfiction stories, but you can scrape a different set of stories and train your own model.
+The text generation bit lets you generate new fanfiction. We have [pre-trained a model](https://huggingface.co/ceostroff/harry-potter-gpt2-fanfiction) using the ~100 most popular HP fanfiction stories, but you can scrape a different set of stories and train your own model.
 
 ## Requirements
 
-A computer with Git, [Git LFS](https://git-lfs.github.com/), Python 3 and pip installed.
+A computer with Git, Python 3 and pip installed.
 
 ## Getting started
 
