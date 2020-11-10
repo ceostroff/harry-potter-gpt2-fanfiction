@@ -1,5 +1,5 @@
 {
-  "_name_or_path": "gpt2",
+  "_name_or_path": "model/checkpoint-58000",
   "activation_function": "gelu_new",
   "architectures": [
     "GPT2LMHeadModel"
