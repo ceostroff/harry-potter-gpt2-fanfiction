@@ -15,7 +15,7 @@ def getLinks():
     for i in range(1, 1001):
         print(i)
         time.sleep(1)
-        url = "https://www.fanfiction.net/book/Harry-Potter/?&srt=1&lan=1&r=103&p=" + str(i)
+        url = "https://www.fanfiction.net/book/Harry-Potter/?&srt=4&lan=1&r=103&p=" + str(i)
         req = requests.get(url)
         bsObj = BeautifulSoup(req.content, 'html.parser')
         posts = bsObj.findAll("div", {"class":"z-list zhover zpointer"})
