@@ -39,6 +39,10 @@ The text generation bit lets you generate new fanfiction. We have [pre-trained a
 
 **Hufflepuff lost** by a hundred points to Slytherin, and the Quidditch team's seeker, Cedric Diggory took down his dragon. The game resumed soon after that as Harry made an appearance in front of everyone."Well I guess it was well deserved," Draco commented. "I don't think
 
+---
+
+**Hufflepuff won the House Cup** by a landslide, and I don't think that's fair!" He said. "I know you can see it in your eyes! But what about him? You're letting him win because he was hurt?"A few of his friends looked alarmed at this statement."We should make sure
+
 
 ## Requirements
 
@@ -77,7 +81,7 @@ $ ./text_generation.sh
 The script will ask you for a prompt: this is the initial text the model will use to generate a story. If you edit the file you can adjust the temperature ('randomness' of the generated text, default at `0.7`), the length and the number of stories (by default 10 blobs of 60 words each). See the original file with all the options [here](https://github.com/huggingface/transformers/blob/master/examples/text-generation/run_generation.py).
 
 ## Getting data
-The scripts to collect the text from fanfiction stories is in the scrapers folder. The first scraper, `fetchData.py` will get the links for the first 1,000 links among the highest rated Harry Potter fanfiction stories. This will write those links to a csv called `HPSummary.csv` with other data about each story. 
+The scripts to collect the text from fanfiction stories is in the scrapers folder. The first scraper, `fetchData.py` will get the links for the first 1,000 links among the highest rated Harry Potter fanfiction stories. This will write those links to a csv called `HPSummary.csv` with other data about each story.
 
 The script `fetchContent.py` will get each link to the story from the csv and write its contents to a text file locally under the data folder. The files will be named by the story ID. The file `sortData.py` will combine those with the needed delimeter and write them to a folder with one file to create a larger `training.txt` file and the other to create a smaller `test.txt` file.
 
