@@ -29,19 +29,19 @@ The text generation bit lets you generate new fanfiction. We have [pre-trained a
 
 ## Examples
 
-**Faced with a pandemic** of new wizarding disease, there wasn't much to do. The Ministry was struggling and the public had been sickened by Harry's expulsion from Hogwarts on his eleventh birthday – all things considered."Well," Dumbledore said finally as he looked at Pansy Parkinson in confusion once more; "I
+**Faced with a pandemic** of new wizarding disease, there wasn't much to do. The Ministry was struggling and the public had been sickened by Harry's expulsion from Hogwarts on his eleventh birthday – all things considered."Well," Dumbledore said finally as he looked at Pansy Parkinson in confusion once more; "I...
 
 ---
 
-**Faced with a pandemic** of Death Eaters, it was hard not to be surprised that the Department for Regulation and Control (DCR) had been heavily infiltrated. Harry knew from his research on magical Britain's Ministry over its political alignment during World War Two how much influence there really were in wizarding society
+**Faced with a pandemic** of Death Eaters, it was hard not to be surprised that the Department for Regulation and Control (DCR) had been heavily infiltrated. Harry knew from his research on magical Britain's Ministry over its political alignment during World War Two how much influence there really were in wizarding society...
 
 ---
 
-**Hufflepuff lost** by a hundred points to Slytherin, and the Quidditch team's seeker, Cedric Diggory took down his dragon. The game resumed soon after that as Harry made an appearance in front of everyone."Well I guess it was well deserved," Draco commented. "I don't think
+**Hufflepuff lost** by a hundred points to Slytherin, and the Quidditch team's seeker, Cedric Diggory took down his dragon. The game resumed soon after that as Harry made an appearance in front of everyone."Well I guess it was well deserved," Draco commented. "I don't think...
 
 ---
 
-**Hufflepuff won the House Cup** by a landslide, and I don't think that's fair!" He said. "I know you can see it in your eyes! But what about him? You're letting him win because he was hurt?"A few of his friends looked alarmed at this statement."We should make sure
+**Hufflepuff won the House Cup** by a landslide, and I don't think that's fair!" He said. "I know you can see it in your eyes! But what about him? You're letting him win because he was hurt?"A few of his friends looked alarmed at this statement."We should make sure...
 
 
 ## Requirements
